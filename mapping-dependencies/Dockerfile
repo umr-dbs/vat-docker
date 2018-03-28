@@ -4,6 +4,9 @@ FROM phusion/baseimage:0.10.0
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
 
+# Update the OS
+RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
+
 # Setup directories
 WORKDIR /app
 COPY scripts /app/install
